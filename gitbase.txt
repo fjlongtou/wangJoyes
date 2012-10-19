@@ -1,0 +1,6 @@
+
+step:
+Create A Repo
+https://help.github.com/articles/create-a-repo
+SSH Keys
+https://help.github.com/articles/generating-ssh-keys

@@ -1,0 +1,41 @@
+1.装ECLIPSE,JDK,JRE,classic版的，也可以做erlang，你如果还有做JAVA项目，建议用其他版本的，存在不同目录即可，AS的FLASHBUILDER不就是一种改版么
+2.装CDT,C++ DEVELOPMENT TOOL->去他官网找CDT,下载CDT-MASTER包，下载完解压到eclipse相应目录下
+3.装MINGW,WIN32下的GCC编译器，开源的，http://mingw.sourceforge.net
+很蛋疼，如果download failed的话，就下载full package吧
+然后写脚本启动CDT，
+SET PATH = C:/MinGW/bin;%PATH%
+SET LIBRARY_PATH = C:/MinGW/lib
+SET C_INCLUDE_PATH = C:/MinGW/include
+SET CPLUS_INCLUDE_PATH = C:/MinGW/include/c++/3.4.5;C:/MinGW/include/c++/3.4.5/mingw32;C:/MinGW/include/c++/3.4.5/backward;C:/MinGW/include
+D:\eclipse-cpp-indigo-SR2-incubation-win32\eclipse\eclipse.exe
+
+设置预包含的头文件和库目录
+这样启动的C++项目就可以运作了
+
+其实后面如果是windows系统还需要用到cygwin的虚拟环境来编译,直接用cygwin也可以
+
+android需要java环境，下载的c++版的eclipse没有jdt(java development tool),可以下载classic版的，比较好
+其中需要1).安装ANDROID SDK
+2).装ADT插件， Help > Install new software，https://dl-ssl.google.com/android/eclipse/
+这些都需要JDT的
+p.s
+如果需要挂接erlang,用erlide,先装好erlang sdk,然后设置下环境变量的
+3).adt挂接的时候，NDK插件安装上去，C++的开发也可以实现了，就是帮你装了CDT，记得有完成前面那几步，有CYGWIN或者MINGW都可以
+4.开始挂进cocos2d-x和NDK
+1).对create-android-project.bat做稍微的更改，把NDK路径，ANDROIDTOOL路径设置好，运行脚本，中间会让你设置一下projectname,packagename,运行完了以后，会在cocos2d-x目录下生成yourProject的文件夹。
+2).windows:用cygwin进到文件夹下的proj.android目录，运行build_native.sh
+linux:运行build_native.sh
+这里是cocos2d-x程序通过NDK编译
+没装make的cygwin环境装一下	
+3).然后把项目导入eclipse
+
+比较好的情况，在windows下用VS做好程序的逻辑层
+linux下还得用eclipse
+
+ps.jdk 要1.6以上才不会报错，可以再项目的complier里设置special,模拟器要4.0.4以上才支持openGlEs 2.0,最好真机测试
+4).然后流程大致是：VS编码，调试，你可以用WINDOWS版本的，自己注意控制内存CPU情况，然后代码移植到你的cocos2d-x目录下你生成的那个目录的Class目录里，用NDK编译一次，即运行build_native.sh,然后ECLIPSE里打包成APK安装到机器上测试
+
+或者在linux下你要用eclipse来同样编码，测试，还需要进一步实验
+
+5.然后，没有然后了
+
